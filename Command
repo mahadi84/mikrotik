@@ -1,0 +1,18 @@
+
+DOWNLOAD:--
+-Go to  https://mikrotik.com/download, -Select "Cloud Hosted Router" -Download "OVA(open virtual appliance) template"
+
+INSTALLATION ON VIRTUAL BOX:--
+-GO to- File>Import appliance. -Show 'download file' and click 'Next'(don't change anything). -Select Diplay settings "VMSVGA" on VIRTUAL BOX and POWER on.
+-Default user id -Admin, Password: blank and press enter
+-Do you want to watch/see license? (y/n) 
+-Type n and press Enter. 
+-That's all.
+
+
+COMMAND:
+[user@routerOS] interface ethernet print      (Get MAC Address)
+[user@routerOS] system shutdown               (Shutdown Router)
+
+
+
