@@ -12,8 +12,11 @@ INSTALLATION ON VIRTUAL BOX:--
 
 COMMAND:
 [user@routerOS] interface ethernet print      (Get MAC Address)
+[user@routerOS] system reset                  (Reset Router All Configuration)
+
 [user@routerOS] system shutdown               (Shutdown Router)
-[user@routerOS] system reset                  (Reset Router Configuration)
+[user@routerOS] system reboot                 (Reboot Router)
+
 
 
 
