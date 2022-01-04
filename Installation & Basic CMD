@@ -26,8 +26,7 @@ SHOW:
 
 
 SET/CONFIGURE:
---RENAME INTERFACE--
-[user@routerOS] interface ethernet set name=eth1_ISP [ find default-name=ether1 ]  (Change interf name (find the port by it's default name, since it is often renamed))
+[user@routerOS] interface ethernet set name=eth1_ISP [ find default-name=ether1 ]  (RENAME INTERFACE (find the port by it's default name, since it is often renamed))
 [user@routerOS] ip address add address=200.168.1.116/24 interface=eth1-ISP                        (SET IP to INTERFACE)
 [user@routerOS] ip route add gateway=192.168.1.249                                                (SET GATWAY)
 [user@routerOS] ip dns set servers=8.8.8.8,8.8.4.4 allow-remote-requests=yes cache-size=10000     (SET DNS)
