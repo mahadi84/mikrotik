@@ -11,11 +11,30 @@ INSTALLATION ON VIRTUAL BOX:--
 
 
 COMMAND:
-[user@routerOS] interface ethernet print      (Get MAC Address)
-[user@routerOS] system reset                  (Reset Router All Configuration)
+BASIC:
+[user@routerOS] interface ethernet print         (Get MAC Address)
+[user@routerOS] system reset                     (Reset Router All Configuration)
+[user@routerOS] system shutdown                  (Shutdown Router)
+[user@routerOS] system reboot                    (Reboot Router)
 
-[user@routerOS] system shutdown               (Shutdown Router)
-[user@routerOS] system reboot                 (Reboot Router)
+SHOW:
+[user@routerOS] interface print                  (All Interfaces with Name FOR ALL VALUES 'value-list')
+[user@routerOS] ip address print                 (IP address for LAN and ISP)
+[user@routerOS] ip dns print                     (DNS)
+[user@routerOS] ip route print                   (ISP gateway, IPs for ISP and LAN)
+[user@routerOS] ip firewal nat print             (Check NAT)
+
+
+SET/CONFIGURE:
+--RENAME INTERFACE--
+[user@routerOS] interface ethernet set name=eth1_ISP [ find default-name=ether1 ]  (Change interf name (find the port by it's default name, since it is often renamed))
+[user@routerOS] ip address add address=200.168.1.116/24 interface=eth1-ISP                      (SET IP to INTERFACE)
+[user@routerOS] ip route add gateway=192.168.1.249                                              (SET GATWAY)
+[user@routerOS] ip dns set servers=8.8.8.8,8.8.4.4 allow-remote-requests=yes cache-size=10000   (SET DNS)
+[user@routerOS] ip firewall nat add chain=srcnat action=masquerade src-address=200.168.1.116/24   (SET NAT)
+
+
+
 
 
 
