@@ -9,15 +9,16 @@ INSTALLATION ON VIRTUAL BOX:--
 -Type n and press Enter. 
 -That's all.
 
+--:COMMANDs:--
 
-COMMAND:
 BASIC:
-[user@routerOS] interface ethernet print         (Get MAC Address)
-[user@routerOS] system reset                     (Reset Router All Configuration)
-[user@routerOS] system shutdown                  (Shutdown Router)
 [user@routerOS] system reboot                    (Reboot Router)
+[user@routerOS] system shutdown                  (Shutdown Router)
+[user@routerOS] system reset                     (Reset Router All Configuration)
+
 
 SHOW:
+[user@routerOS] interface ethernet print         (Get MAC Address)
 [user@routerOS] interface print                  (All Interfaces with Name FOR ALL VALUES 'value-list')
 [user@routerOS] ip address print                 (IP address for LAN and ISP)
 [user@routerOS] ip dns print                     (DNS)
