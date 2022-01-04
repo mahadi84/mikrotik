@@ -31,7 +31,7 @@ SET/ADD:
 [user@routerOS] ip address add address=200.168.1.116/24 interface=eth1-ISP                        (ISP and LAN's IP to INTERFACEs)
 [user@routerOS] ip dns set servers=8.8.8.8,8.8.4.4 allow-remote-requests=yes cache-size=10000     (ISP DNS)
 [user@routerOS] ip route add gateway=192.168.1.249                                                (ISP GATWAY)
-[user@routerOS] ip firewall nat add chain=srcnat action=masquerade src-address=200.168.1.116/24   (NAT)
+[user@routerOS] ip firewall nat add chain=srcnat src-address=200.168.1.116/24 action=masquerade   (NAT)
 
 
 
