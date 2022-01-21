@@ -1,4 +1,7 @@
 
+HOW TO INSTALL ON VIRTUALBOX: 
+https://www.youtube.com/watch?v=k0zbBOaOccs
+
 DOWNLOAD:--
 -Go to  https://mikrotik.com/download, -Select "Cloud Hosted Router" -Download "OVA(open virtual appliance) template" from 'Long-tern version' column
 
@@ -8,6 +11,7 @@ INSTALLATION ON VIRTUAL BOX:--
 -Do you want to watch/see license? (y/n) 
 -Type n and press Enter. 
 -That's all.
+========================================
 
 --:COMMANDs:--
 
