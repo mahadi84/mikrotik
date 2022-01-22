@@ -37,7 +37,7 @@ CONFIURE FOR INTERNET:
 [user@routerOS] interface ethernet set name=LAN [ find default-name=ether2 ]                        (RENAME INTERFACE for LAN)
 [user@routerOS] ip address add address=192.168.0.105/24 interface=ISP                               (ISP  to INTERFACEs (change the IP as per ISP))
 [user@routerOS] ip address add address=200.0.0.1/24 interface=LAN                                   (LAN's IP to INTERFACEs (change the IP as per YOUR CONFIGURATION)
-[user@routerOS] ip dhcp server-setup                                                                (DHCP for LAN)
+[user@routerOS] ip dhcp-server setup                                                                (DHCP for LAN)
 [user@routerOS] ip dns set servers=192.168.0.1,8.8.4.4 allow-remote-requests=yes cache-size=10000   (ISP DNS)
 [user@routerOS] ip route add gateway=192.168.0.1                                                    (ISP GATWAY)
 [user@routerOS] ip firewall nat add chain=srcnat out-interface=ISP action=masquerade                (NATing)
