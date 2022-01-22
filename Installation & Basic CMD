@@ -1,4 +1,5 @@
 
+
 HOW TO INSTALL ON VIRTUALBOX (VIDEO: 0-5:19minutes): 
 https://www.youtube.com/watch?v=k0zbBOaOccs
 
@@ -13,23 +14,8 @@ INSTALLATION ON VIRTUAL BOX:--
 -Do you want to watch/see license? (y/n) 
 -Type n and press Enter. 
 -That's all.
+
 ========================================
-
---:COMMANDs:--
-
-BASIC:
-[user@routerOS] system reboot                    (Reboot Router)
-[user@routerOS] system shutdown                  (Shutdown Router)
-[user@routerOS] system reset                     (Reset Router All Configuration)
-
-
-SHOW:
-[user@routerOS] interface ethernet print         (Get MAC Address)
-[user@routerOS] interface print                  (All Interfaces with Name FOR ALL VALUES 'value-list')
-[user@routerOS] ip address print                 (IP address for LAN and ISP)
-[user@routerOS] ip dns print                     (DNS)
-[user@routerOS] ip route print                   (ISP gateway, IPs for ISP and LAN)
-[user@routerOS] ip firewal nat print             (Check NAT)
 
 
 CONFIURE FOR INTERNET:
@@ -42,6 +28,22 @@ CONFIURE FOR INTERNET:
 [user@routerOS] ip route add gateway=192.168.0.1                                                    (Add ISP's GATWAY)
 [user@routerOS] ip firewall nat add chain=srcnat out-interface=ISP action=masquerade                (NATing)
 
+
+--:COMMANDs:--
+
+SHUTDOWN/REBOOT/RESET:
+[user@routerOS] system reboot                    (Reboot Router)
+[user@routerOS] system shutdown                  (Shutdown Router)
+[user@routerOS] system reset                     (Reset Router All Configuration)
+
+
+SHOW:
+[user@routerOS] interface ethernet print         (Get MAC Address)
+[user@routerOS] interface print                  (All Interfaces with Name FOR ALL VALUES 'value-list')
+[user@routerOS] ip address print                 (IP address for LAN and ISP)
+[user@routerOS] ip dns print                     (DNS)
+[user@routerOS] ip route print                   (ISP gateway, IPs for ISP and LAN)
+[user@routerOS] ip firewal nat print             (Check NAT)
 
 
 
