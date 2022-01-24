@@ -47,9 +47,10 @@ CONFIURE FOR INTERNET:
 --:COMMANDs:--
 
 SHUTDOWN/REBOOT/RESET:
-[user@routerOS] system reboot                    (Reboot Router)
-[user@routerOS] system shutdown                  (Shutdown Router)
-[user@routerOS] system reset                     (Reset Router All Configuration)
+[user@routerOS] system reboot                          (Reboot Router)
+[user@routerOS] system shutdown                        (Shutdown Router)
+[user@routerOS] system reset                           (Reset Router All Configuration)
+[user@routerOS] system identity set name=Router_Name   (Rename Router)
 
 
 SHOW:
