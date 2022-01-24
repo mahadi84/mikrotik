@@ -62,4 +62,3 @@ ip firewall nat add chain=srcnat src-address=10.10.12.1/24(LOCAL-LAN-IP-/CIDR) d
 
 
 
-
