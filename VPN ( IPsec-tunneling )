@@ -1,60 +1,48 @@
-
+SRC:https://systemzone.net/mikrotik-site-to-site-vpn-configuration-with-ipsec/
 
 
 ROUTER-01: HEAD_OFFICE
--------------------
-WAN: 192.168.70.2/30
+----------------------
+WAN: 10.0.0.2/30
 DNS: 8.8.8.8,8.8.4.4
-GATEWAY: 192.168.70.1
-LAN: 10.10.11.1/24
+GATEWAY: 10.0.0.1
+LAN: 200.0.0.1/24
 
-common config for internet:
---------------------------
 interface ethernet set name=ISP [ find default-name=ether1 ]
 interface ethernet set name=LAN [ find default-name=ether2 ]                    
-ip address add address=192.168.70.2/30 interface=ISP                        
-ip address add address=10.10.11.1/24 interface=LAN                              
+ip address add address=10.0.0.2/30 interface=ISP                        
+ip address add address=200.0.0.1/24 interface=LAN                              
 ip dns set servers=8.8.8.8,8.8.4.4 allow-remote-requests=yes cache-size=10000
-ip route add gateway=192.168.70.1
+ip route add gateway=10.0.0.1
 ip dhcp-server setup
                                           
 ip firewall nat add chain=srcnat out-interface=ISP action=masquerade 
 
+ip ipsec peer add name=peer01 address=20.0.0.2 port=500     
+ip ipsec identity  add peer=peer01 secret=123                           
+ip firewall nat add chain=srcnat src-address=200.0.0.1/24 dst-address=210.0.0.1/24 action=accept    
 
 
-(STEP: 02 & 03) IPsec Peer and NAT Bypass Rule Configuration in Router 01: 
---------------------------------------------------------------------------
-ip ipsec peer add name=NAME-A-PEER address=REMOTE-ROUTER-IP port=500     (create a peer name with remote ROUTER-IP and SET PORT 500)
-ip ipsec identity  add peer=peer01 secret=123                            (Select peer NAME you just created, Set secret PASSWORD)
-ip firewall nat add chain=srcnat src-address=10.10.11.1/24(LOCAL-LAN-IP-/CIDR) dst-address=10.10.12.1/24(DEST-LAN-IP/CIDR) action=accept     (NAT Bypass Rule)
-
-
-
-=============================
-
-ROUTER-02: BRANCH
----------------
-WAN: 192.168.80.2/30
+ROUTER-02: BRANCH:
+------------------
+WAN: 20.0.0.2/30
 DNS: 8.8.8.8,8.8.4.4
-GATEWAY: 192.168.80.1
-LAN: 10.10.12.1/24
+GATEWAY: 20.0.0.1
+LAN: 210.0.0.1/24
 
 interface ethernet set name=ISP [ find default-name=ether1 ]
 interface ethernet set name=LAN [ find default-name=ether2 ]                    
-ip address add address=192.168.80.2/30 interface=ISP                        
-ip address add address=10.10.12.1/24 interface=LAN                              
+ip address add address=20.0.0.2/30 interface=ISP                        
+ip address add address=210.0.0.1/24 interface=LAN                              
 ip dns set servers=8.8.8.8,8.8.4.4 allow-remote-requests=yes cache-size=10000
-ip route add gateway=192.168.80.1
+ip route add gateway=20.0.0.1
 ip dhcp-server setup
                                           
-ip firewall nat add chain=srcnat out-interface=ISP action=masquerade    
+ip firewall nat add chain=srcnat out-interface=ISP action=masquerade 
 
-
-(STEP: 02 & 03) IPsec Peer and NAT Bypass Rule Configuration in Router 02: 
---------------------------------------------------------------------------
-ip ipsec peer add name=NAME-A-PEER address=REMOTE-ROUTER-IP port=500     
-ip ipsec identity  add peer=peer01 secret=123                            
-ip firewall nat add chain=srcnat src-address=10.10.12.1/24(LOCAL-LAN-IP-/CIDR) dst-address=10.10.11.1/24(DEST-LAN-IP/CIDR) action=accept     
+ip ipsec peer add name=peer01 address=10.0.0.2 port=500     
+ip ipsec identity  add peer=peer01 secret=123                           
+ip firewall nat add chain=srcnat src-address=210.0.0.1/24 dst-address=200.0.0.1/24 action=accept       
 
 
 
