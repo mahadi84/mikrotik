@@ -19,8 +19,10 @@ ip dhcp-server setup
 ip firewall nat add chain=srcnat out-interface=ISP action=masquerade 
 
 ip ipsec peer add name=peer01 address=20.0.0.2 port=500     
-ip ipsec identity  add peer=peer01 secret=123                           
-ip firewall nat add chain=srcnat src-address=200.0.0.1/24 dst-address=210.0.0.1/24 action=accept    
+ip ipsec identity  add peer=peer01 secret=123
+ip ipsec policies peer=SELECT-PEER-NAME src-address=200.0.0.0/24(LAN-IP) dst-address=210.0.0.0/24  tunnel=yes
+
+ip firewall nat add chain=srcnat src-address=200.0.0.0/24 dst-address=210.0.0.0/24 action=accept    
 
 
 ROUTER-02: BRANCH:
@@ -41,8 +43,10 @@ ip dhcp-server setup
 ip firewall nat add chain=srcnat out-interface=ISP action=masquerade 
 
 ip ipsec peer add name=peer01 address=10.0.0.2 port=500     
-ip ipsec identity  add peer=peer01 secret=123                           
-ip firewall nat add chain=srcnat src-address=210.0.0.1/24 dst-address=200.0.0.1/24 action=accept       
+ip ipsec identity  add peer=peer01 secret=123
+ip ipsec policies peer=SELECT-PEER-NAME src-address=210.0.0.0/24(LAN-IP) dst-address=200.0.0.0/24  tunnel=yes
+
+ip firewall nat add chain=srcnat src-address=210.0.0.0/24 dst-address=200.0.0.0/24 action=accept       
 
 
 
