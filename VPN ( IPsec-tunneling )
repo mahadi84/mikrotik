@@ -1,8 +1,5 @@
 
 
-====================: STEP: 01 :=====================
-
-
 
 ROUTER-01: HEAD_OFFICE
 -------------------
@@ -11,6 +8,8 @@ DNS: 8.8.8.8,8.8.4.4
 GATEWAY: 192.168.70.1
 LAN: 10.10.11.1/24
 
+common config for internet:
+--------------------------
 interface ethernet set name=ISP [ find default-name=ether1 ]
 interface ethernet set name=LAN [ find default-name=ether2 ]                    
 ip address add address=192.168.70.2/30 interface=ISP                        
@@ -21,7 +20,17 @@ ip dhcp-server setup
                                           
 ip firewall nat add chain=srcnat out-interface=ISP action=masquerade 
 
---------------------
+
+
+(STEP: 02 & 03) IPsec Peer and NAT Bypass Rule Configuration in Router 01: 
+--------------------------------------------------------------------------
+ip ipsec peer add name=NAME-A-PEER address=REMOTE-ROUTER-IP port=500     (create a peer name with remote ROUTER-IP and SET PORT 500)
+ip ipsec identity  add peer=peer01 secret=123                            (Select peer NAME you just created, Set secret PASSWORD)
+ip firewall nat add chain=srcnat src-address=10.10.11.1/24(LOCAL-LAN-IP-/CIDR) dst-address=10.10.12.1/24(DEST-LAN-IP/CIDR) action=accept     (NAT Bypass Rule)
+
+
+
+=============================
 
 ROUTER-02: BRANCH
 ---------------
@@ -41,29 +50,14 @@ ip dhcp-server setup
 ip firewall nat add chain=srcnat out-interface=ISP action=masquerade    
 
 
-=====================: STEP: 02 :=======================
-
-IPsec Peer Configuration in Router 01:
---------------------------------------
-ip ipsec peer add name=NAME-A-PEER address=REMOTE-ROUTER-IP port=500
-ip ipsec identity  add peer=peer01 secret=123
-
-
-IPsec Peer Configuration in Router 02:
---------------------------------------
-ip ipsec peer add name=NAME-A-PEER address=REMOTE-ROUTER-IP port=500
-ip ipsec identity  add peer=peer01 secret=123
-
-====================: STEP: 03 :======================
-
-NAT Bypass Rule Configuration in Router 01:
-===========================================
-ip firewall nat add chain=srcnat src-address=10.10.11.1/24(LOCAL-LAN-IP) dst-address=10.10.12.1/24(DEST-LAN-IP) action=accept
+(STEP: 02 & 03) IPsec Peer and NAT Bypass Rule Configuration in Router 02: 
+--------------------------------------------------------------------------
+ip ipsec peer add name=NAME-A-PEER address=REMOTE-ROUTER-IP port=500     
+ip ipsec identity  add peer=peer01 secret=123                            
+ip firewall nat add chain=srcnat src-address=10.10.12.1/24(LOCAL-LAN-IP-/CIDR) dst-address=10.10.11.1/24(DEST-LAN-IP/CIDR) action=accept     
 
 
-NAT Bypass Rule Configuration in Router 02:
-===========================================
-ip firewall nat add chain=srcnat src-address=10.10.12.1/24(LOCAL-LAN-IP) dst-address=10.10.11.1/24(DEST-LAN-IP) action=accept
+
 
 
 
