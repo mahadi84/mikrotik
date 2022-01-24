@@ -73,6 +73,9 @@ TO CHECK MAC/INTERFACE NAME/IP/DNS/GATEWAY/NAT information:
 [user@routerOS] ip firewal nat print                   (Check NAT)
 
 
+EIDT/UPDATE:
+------------
+ip dhcp-server network set 0 dns-server=8.8.8.8,8.8.4.4
 
 
 
