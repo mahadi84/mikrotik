@@ -18,18 +18,6 @@ INSTALLATION ON VIRTUAL BOX:--
 ========================================
 
 
-CONFIGURE FOR INTERNET:
------------------------
-[user@routerOS] interface ethernet set name=ISP [ find default-name=ether1 ]                (RENAME INTERFACE (find the port by it's default name, since it often renamed))
-[user@routerOS] interface ethernet set name=LAN [ find default-name=ether2 ]                        (RENAME INTERFACE for LAN)
-[user@routerOS] ip address add address=192.168.0.105/24 interface=ISP                               (Add ISP's IP  to INTERFACEs (change the IP as per ISP))
-[user@routerOS] ip address add address=200.0.0.1/24 interface=LAN                                   (Add LAN's IP to INTERFACEs (change the IP as per YOUR CONFIGURATION)
-[user@routerOS] ip dhcp-server setup                                                                (Configure DHCP for LAN)
-[user@routerOS] ip dns set servers=192.168.0.1,8.8.4.4 allow-remote-requests=yes cache-size=10000   (Add ISP's DNS)
-[user@routerOS] ip route add gateway=192.168.0.1                                                    (Add ISP's GATWAY)
-[user@routerOS] ip firewall nat add chain=srcnat out-interface=ISP action=masquerade                (NATing)
-
-
 
 --:COMMANDs:--
 
@@ -57,7 +45,7 @@ TO CHECK MAC/INTERFACE NAME/IP/DNS/GATEWAY/NAT information:
 [user@routerOS] ip firewal nat print                   (Check NAT)
 
 
-EIDT/UPDATE:
+EDIT/UPDATE:
 ------------
 ip dhcp-server network set 0 dns-server=8.8.8.8,8.8.4.4
 
