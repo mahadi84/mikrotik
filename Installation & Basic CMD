@@ -78,5 +78,7 @@ EIDT/UPDATE:
 ip dhcp-server network set 0 dns-server=8.8.8.8,8.8.4.4
 
 
-
+======================================: ISSUEs: =============================
+Problem: WINBOX won't connect using the mac address.
+Solution: ip service enable www   (Command and then try to connect with winbox)
 
